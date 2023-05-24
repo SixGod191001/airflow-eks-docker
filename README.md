@@ -6,7 +6,7 @@ Airflow Docker image used in AWS EKS cluster
   - cd ~/environment
   - docker build -t airflow-test airflow-eks-docker/
   - docker images ls
-  - docker run --rm airflow-test bash -c "airflow initdb && pytest unittests/test_dag_validation.py"
+  - docker run --rm airflow-test bash -c "airflow db init && pytest unittests/test_dag_validation.py"
 
 
 ## How to run the unittest on codepipeline
