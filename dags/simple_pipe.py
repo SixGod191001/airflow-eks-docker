@@ -1,6 +1,7 @@
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
+
 from datetime import datetime, timedelta
 
 
@@ -25,7 +26,7 @@ def parsing():
 def processing():
     return True
 
-with DAG("simple_pipe", default_args=default_args, schedule_interval="*/5 * * * *", catchup=False) as dag:
+with DAG("simple_pipe", default_args=default_args, schedule="*/5 * * * *", catchup=False) as dag:
     t1 = PythonOperator(task_id="parsing", python_callable=parsing)
     t2 = PythonOperator(task_id="processing", python_callable=processing)
     t3 = BashOperator(task_id="storing", bash_command="exit 0")
