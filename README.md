@@ -5,7 +5,7 @@ Airflow Docker image used in AWS EKS cluster
 ## How to run the unittest locally
   - cd ~/environment
   - docker build -t airflow-test airflow-eks-docker/
-  - docker images ls
+  - docker image ls
   - docker run --rm airflow-test bash -c "airflow db init && pytest unittests/test_dag_validation.py"
 
 
