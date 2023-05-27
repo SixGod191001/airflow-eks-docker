@@ -1,4 +1,4 @@
-FROM apache/airflow:2.6.1-python3.10
+FROM apache/airflow:2.5.3
 
 #LABEL version="1.0.4"
 
@@ -9,3 +9,7 @@ COPY unittests.cfg ${AIRFLOW_HOME}/unittests.cfg
 COPY airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 COPY unittests/ ${AIRFLOW_HOME}/unittests
 COPY integrationtests ${AIRFLOW_HOME}/integrationtests
+
+COPY script/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
